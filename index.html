@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Глеб Воронков — инженер PS Core, разработчик ИИ, исследователь 3D-графики. Портфолио и научные публикации.">
+    <title>Глеб Воронков | Инженер · Разработчик ИИ · 3D-исследователь</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script async src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+</head>
+<body>
+    <!-- 3D-фон -->
+    <canvas id="bg"></canvas>
+
+    <!-- Прелоадер -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Основной контент -->
+    <main id="content">
+        <!-- Шапка -->
+        <header>
+            <div class="header-content">
+                <h1>Глеб Алексеевич Воронков</h1>
+                <p class="subtitle">Инженер PS Core · Разработчик ИИ · 3D-исследователь</p>
+                <div class="header-links">
+                    <a href="https://github.com/GlebVoronkov03" target="_blank">GitHub</a>
+                    <a href="https://ieeexplore.ieee.org/author/37090096739" target="_blank">IEEE Xplore</a>
+                    <a href="#" target="_blank">РИНЦ</a>
+                    <a href="assets/cv.pdf" download>📄 Скачать резюме</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Образование -->
+        <section id="education" class="fade-in">
+            <h2>🎓 Образование</h2>
+            <div class="card">
+                <h3>Московский технический университет связи и информатики (МТУСИ)</h3>
+                <p class="faculty">Факультет «Радио и телевидение»</p>
+                <ul>
+                    <li><strong>Магистратура</strong> (текущее обучение) — «Радиотехника»</li>
+                    <li><strong>Бакалавриат</strong> (окончен с отличием) — «Инфокоммуникационные технологии и системы связи»</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Опыт работы -->
+        <section id="experience" class="fade-in">
+            <h2>💼 Профессиональная деятельность</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>ПАО «ВымпелКом» (билайн)</h3>
+                    <p>Инженер PS Core (с 2025 г.)</p>
+                </div>
+                <div class="card">
+                    <h3>Telcore</h3>
+                    <p>Разработчик систем искусственного интеллекта</p>
+                </div>
+                <div class="card">
+                    <h3>Научно-исследовательская часть МТУСИ</h3>
+                    <p>Исследовательская деятельность</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Публикации -->
+        <section id="publications" class="fade-in">
+            <h2>📚 Научные публикации <span class="counter">7 работ</span></h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="scopus">Scopus / IEEE</button>
+                <button class="filter-btn" data-filter="rinc">РИНЦ</button>
+                <button class="filter-btn" data-filter="soft">Программы ЭВМ</button>
+            </div>
+            <div class="pub-list">
+                <div class="pub-item" data-cat="scopus">
+                    <span class="badge">Scopus</span>
+                    <p class="pub-title">PLER: A Novel Full-Reference Metric for Evaluating the Geometric Fidelity of 3D Assets</p>
+                    <p class="pub-details">2025, IEEE Xplore</p>
+                </div>
+                <div class="pub-item" data-cat="scopus">
+                    <span class="badge">Scopus</span>
+                    <p class="pub-title">Research of Methods for Modeling User Assessments of 3D Content for Extended Reality Systems</p>
+                    <p class="pub-details">Соавт. Власюк И.В., 2025 Systems of Signals Generating and Processing..., IEEE, 12 марта 2025, с. 1–5.</p>
+                </div>
+                <div class="pub-item" data-cat="scopus">
+                    <span class="badge">Scopus</span>
+                    <p class="pub-title">Error Analysis of Generating 3D Models of Objects Using Various Hardware Systems</p>
+                    <p class="pub-details">2025, IEEE Xplore</p>
+                </div>
+                <div class="pub-item" data-cat="rinc">
+                    <span class="badge">РИНЦ</span>
+                    <p class="pub-title">Захват движений персонажей для производства вещательного контента</p>
+                    <p class="pub-details">Соавт. Винецкий В.Ю., Системы синхронизации, формирования и обработки сигналов, 2025, №4.</p>
+                </div>
+                <div class="pub-item" data-cat="rinc">
+                    <span class="badge">РИНЦ</span>
+                    <p class="pub-title">Методология снижения детализации по регионам интереса</p>
+                    <p class="pub-details"></p>
+                </div>
+                <div class="pub-item" data-cat="rinc">
+                    <span class="badge">РИНЦ</span>
+                    <p class="pub-title">Модель студии производства виртуального видеоконтента с применением технологий дополненной реальности</p>
+                    <p class="pub-details"></p>
+                </div>
+                <div class="pub-item" data-cat="soft">
+                    <span class="badge">Программа ЭВМ</span>
+                    <p class="pub-title">Программа захвата и переноса движений с видеозаписи на антропоморфную трехмерную модель в Unreal Engine</p>
+                    <p class="pub-details">Свидетельство о регистрации программы для ЭВМ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Проекты -->
+        <section id="projects" class="fade-in">
+            <h2>🔬 Проекты</h2>
+            <div class="card-grid">
+                <div class="project-card">
+                    <h3>ARTCam</h3>
+                    <p>Студия виртуального видеоконтента (Unreal Engine, захват движений, 3D-среда реального времени). Прошёл отбор в Акселератор Университета Иннополис (июль 2023).</p>
+                </div>
+                <div class="project-card">
+                    <h3>Фотограмметрия</h3>
+                    <p>Генерация 3D-моделей для VR/AR-симуляций (в составе ARTCam).</p>
+                </div>
+                <div class="project-card">
+                    <h3>Трекинг движений</h3>
+                    <p>Собственная программа переноса движений с видео на 3D-персонаж в Unreal Engine.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Метрики 3D-качества</h3>
+                    <p>Объективная референсная метрика, метрика топологии, кодек сжатия 3D (до 159 раз без потерь).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Достижения -->
+        <section id="achievements" class="fade-in">
+            <h2>🏆 Достижения и награды</h2>
+            <ul class="achievements-list">
+                <li>Стипендиат программы «Альфа-Будущее» (Альфа-Банк, декабрь 2025)</li>
+                <li>Финалист грантового конкурса «Студенческий стартап» (2023) — проект ARTCam</li>
+            </ul>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contacts" class="fade-in">
+            <h2>📬 Контакты</h2>
+            <p>Свяжитесь со мной через социальные сети или заполните форму (она отправится на мою почту через Formspree).</p>
+            <form id="contact-form" action="https://formspree.io/f/{your-form-id}" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" rows="4" placeholder="Сообщение" required></textarea>
+                <button type="submit">Отправить</button>
+                <p id="form-status"></p>
+            </form>
+            <div class="social-links">
+                <a href="https://github.com/GlebVoronkov03" target="_blank">GitHub</a>
+                <a href="https://ieeexplore.ieee.org/author/37090096739" target="_blank">IEEE</a>
+                <a href="#" target="_blank">РИНЦ</a>
+                <a href="#" target="_blank">Freelance.ru</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Глеб Воронков. Собрано на GitHub Pages.</p>
+        </footer>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
