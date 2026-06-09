@@ -1,119 +1,82 @@
-// Трёхмерный фон
-let scene, camera, renderer, torus;
-function initThree() {
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+(function() {
+  'use strict';
 
-    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // --- DOM Elements ---
+  const navLinks = document.querySelectorAll('nav a[data-tab]');
+  const panels = document.querySelectorAll('.tab-panel');
+  const mainNav = document.getElementById('mainNav');
 
-    // Освещение и объект
-    const ambient = new THREE.AmbientLight(0x404060);
-    scene.add(ambient);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    dirLight.position.set(1, 1, 1);
-    scene.add(dirLight);
-
-    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 200, 16);
-    const material = new THREE.MeshStandardMaterial({
-        color: 0x00d4aa,
-        roughness: 0.3,
-        metalness: 0.7,
-        wireframe: false,
-    });
-    torus = new THREE.Mesh(geometry, material);
-    scene.add(torus);
-
-    // Частицы
-    const starsGeometry = new THREE.BufferGeometry();
-    const starsCount = 800;
-    const starsPositions = new Float32Array(starsCount * 3);
-    for (let i = 0; i < starsCount * 3; i += 3) {
-        starsPositions[i] = (Math.random() - 0.5) * 20;
-        starsPositions[i+1] = (Math.random() - 0.5) * 20;
-        starsPositions[i+2] = (Math.random() - 0.5) * 10;
+  // --- Switch active tab ---
+  function showTab(tabId) {
+    // Hide all panels
+    panels.forEach(p => p.classList.remove('active'));
+    // Show selected panel
+    const activePanel = document.getElementById(tabId);
+    if (activePanel) {
+      activePanel.classList.add('active');
     }
-    starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
-    const starsMaterial = new THREE.PointsMaterial({color: 0x8888cc, size: 0.02});
-    const stars = new THREE.Points(starsGeometry, starsMaterial);
-    scene.add(stars);
 
-    animate();
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-    if (torus) {
-        torus.rotation.x += 0.002;
-        torus.rotation.y += 0.003;
-    }
-    renderer.render(scene, camera);
-}
-
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// Прелоадер
-window.addEventListener('load', () => {
-    document.getElementById('preloader').classList.add('hidden');
-});
-
-// Анимация появления секций
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+    // Update nav active class
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-tab') === tabId) {
+        link.classList.add('active');
+      }
     });
-}, { threshold: 0.15 });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-// Фильтр публикаций
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.pub-item').forEach(item => {
-            if (filter === 'all' || item.dataset.cat === filter) {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+  // --- Event listeners for nav ---
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const tab = this.getAttribute('data-tab');
+      showTab(tab);
+      // Update URL hash without jumping
+      history.pushState(null, null, '#' + tab);
+      // Close mobile menu if open
+      if (mainNav) mainNav.classList.remove('show');
     });
-});
+  });
 
-// Обработка формы (показывает статус без перезагрузки)
-const form = document.getElementById('contact-form');
-if (form) {
-    form.addEventListener('submit', async (e) => {
+  // --- Event listeners for inline data-tab links (e.g. CTA button) ---
+  document.querySelectorAll('a[data-tab]').forEach(el => {
+    if (!el.closest('nav')) {
+      el.addEventListener('click', function(e) {
         e.preventDefault();
-        const status = document.getElementById('form-status');
-        status.textContent = 'Отправка...';
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) {
-                status.textContent = '✅ Сообщение отправлено!';
-                form.reset();
-            } else {
-                status.textContent = '❌ Ошибка. Попробуйте позже.';
-            }
-        } catch (error) {
-            status.textContent = '❌ Ошибка соединения.';
-        }
-    });
-}
+        const tab = this.getAttribute('data-tab');
+        showTab(tab);
+        history.pushState(null, null, '#' + tab);
+        if (mainNav) mainNav.classList.remove('show');
+      });
+    }
+  });
 
-// Запуск 3D
-initThree();
+  // --- Mobile menu toggle ---
+  window.toggleMenu = function() {
+    if (mainNav) mainNav.classList.toggle('show');
+  };
+
+  // --- Initialise tab from URL hash on page load ---
+  function initFromHash() {
+    const hash = window.location.hash.substring(1); // remove '#'
+    if (hash) {
+      // Check if a panel with that id exists
+      const targetPanel = document.getElementById(hash);
+      if (targetPanel) {
+        showTab(hash);
+        return;
+      }
+    }
+    // Default: show 'about' if no valid hash
+    showTab('about');
+  }
+
+  // --- Handle back/forward browser buttons ---
+  window.addEventListener('hashchange', initFromHash);
+
+  // --- Start ---
+  initFromHash();
+})();
