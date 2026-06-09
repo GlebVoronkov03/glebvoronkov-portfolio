@@ -3,618 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gleb Voronkov — 3D Vision Researcher | PLER Metric | MTUCI</title>
-    <meta name="description" content="Researcher in 3D computer vision, author of PLER metric for geometric fidelity. 7 publications, MSc in Radio Engineering. Explore my portfolio and open‑source projects.">
-    
-    <!-- Fonts -->
+    <meta name="description" content="Gleb Voronkov — Research Engineer in Computer Vision & 3D Graphics. IEEE author, MTUCI researcher, PLER metric creator.">
+    <meta name="keywords" content="Gleb Voronkov, computer vision, 3D graphics, PLER metric, IEEE, MTUCI, XR">
+    <meta name="author" content="Gleb Voronkov">
+    <meta property="og:title" content="Gleb Voronkov — Research Engineer">
+    <meta property="og:description" content="Computer Vision & 3D Graphics researcher. Creator of PLER metric.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://glebvoronkov03.github.io/glebvoronkov-portfolio/">
+    <meta name="twitter:card" content="summary">
+    <title>Gleb Voronkov — Research Engineer</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        /* ----- Reset & Variables ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --bg: #fafafa;
-            --text: #1a1a1a;
-            --text-light: #555;
-            --accent: #1e3a5f; /* deep blue */
-            --accent-light: #e8f0fe;
-            --border: #e0e0e0;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.05);
-            --radius: 8px;
-            --transition: 0.2s ease;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-light);
-            padding-bottom: 0.5rem;
-        }
-        
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-        
-        /* ----- Header & Navigation ----- */
-        header {
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        nav {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            font-weight: 500;
-            padding: 0.3rem 0;
-            border-bottom: 2px solid transparent;
-            transition: var(--transition);
-        }
-        nav a:hover,
-        nav a.active {
-            border-bottom-color: var(--accent);
-            text-decoration: none;
-        }
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--accent);
-        }
-        
-        /* ----- Hero Section (inside About) ----- */
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem 2rem;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-        }
-        .hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            font-weight: 400;
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
-        }
-        .hero .cta {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            margin-top: 0.5rem;
-        }
-        .hero .cta:hover {
-            background: #16304f;
-            text-decoration: none;
-        }
-        
-        /* ----- Stats (About page) ----- */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-        .stat-item {
-            background: var(--card-bg);
-            padding: 1.2rem 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            min-width: 130px;
-        }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        /* ----- Tab content panels ----- */
-        .tab-panel {
-            display: none;
-            animation: fade 0.3s;
-        }
-        .tab-panel.active {
-            display: block;
-        }
-        @keyframes fade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* ----- Cards (Research, Projects) ----- */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-        }
-        .card h3 {
-            margin-bottom: 0.5rem;
-        }
-        .badge {
-            display: inline-block;
-            background: var(--accent-light);
-            color: var(--accent);
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 0.2rem 0.7rem;
-            border-radius: 20px;
-            margin-right: 0.4rem;
-            margin-bottom: 0.4rem;
-        }
-        .badge i {
-            margin-right: 3px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
-            transition: var(--transition);
-            background: var(--accent);
-            color: white;
-        }
-        .btn:hover {
-            background: #16304f;
-            text-decoration: none;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-        }
-        .btn-outline:hover {
-            background: var(--accent-light);
-        }
-        
-        /* ----- Tables for projects (simple) ----- */
-        .project-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        .project-table th {
-            background: var(--accent-light);
-            padding: 0.7rem;
-            text-align: left;
-            font-weight: 600;
-        }
-        .project-table td {
-            padding: 0.7rem;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        /* ----- Experience timeline ----- */
-        .timeline-item {
-            border-left: 3px solid var(--accent);
-            padding-left: 1.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 0;
-            width: 13px;
-            height: 13px;
-            background: var(--accent);
-            border-radius: 50%;
-        }
-        .timeline-date {
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.3rem;
-        }
-        
-        /* ----- Contact ----- */
-        .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-right: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        /* ----- Footer ----- */
-        footer {
-            margin-top: auto;
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border);
-            font-size: 0.9rem;
-        }
-        
-        /* ----- Responsive ----- */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0.8rem;
-                margin-top: 1rem;
-            }
-            nav.show {
-                display: flex;
-            }
-            header {
-                flex-wrap: wrap;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .stats {
-                gap: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Gleb Voronkov</div>
-        <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">☰</button>
-        <nav id="mainNav">
-            <a href="#" data-tab="about" class="active">About</a>
-            <a href="#" data-tab="research">Research</a>
-            <a href="#" data-tab="projects">Projects</a>
-            <a href="#" data-tab="experience">Experience</a>
-            <a href="#" data-tab="contact">Contact</a>
-        </nav>
-    </header>
-    
+    <div class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+        <i class="fas fa-moon"></i>
+    </div>
+
     <main class="container">
-        <!-- About Tab -->
-        <section id="about" class="tab-panel active">
-            <div class="hero">
-                <h1>Gleb Voronkov</h1>
-                <p class="subtitle">3D Computer Vision Researcher & Metric System Architect<br>
-                I design objective quality metrics, architect 3D evaluation pipelines, and publish at IEEE.</p>
-                <a href="#" data-tab="research" class="cta">View Research Portfolio</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                <span>Open for collaboration</span>
             </div>
-            
-            <p style="max-width:800px;margin:0 auto 2rem;">
-                I help XR platforms, game studios, and 3D marketplaces answer one critical question:
-                <em>"How good is this 3D asset, objectively?"</em><br><br>
-                My answer is <strong>PLER</strong> — a novel full‑reference metric for geometric fidelity of 3D assets, published in IEEE. 
-                It did not stop at theory: I engineered the entire evaluation framework, from mathematical formalization to a production‑ready Python API, validated across multiple generative pipelines.<br><br>
-                This blend of algorithmic invention and system‑level engineering runs through all my work. 
-                I built the ARTCam virtual production studio (motion capture + photogrammetry + real‑time rendering), 
-                designed AI pipelines at Telcore, and operated high‑availability packet‑core networks at Beeline — 
-                a rare combination that lets me see both the mathematical beauty of a metric and the infrastructure required to deploy it at scale.<br><br>
-                Currently completing my <strong>MSc in Radio Engineering at MTUCI</strong>.<br>
-                7 research papers, 3 indexed in Scopus/IEEE Xplore.<br>
-                Open to Research Scientist / Applied Scientist roles where I can create the metrics and architectures that define the future of spatial computing.
+            <h1 class="hero-title">
+                Gleb <span class="highlight">Voronkov</span>
+            </h1>
+            <div class="hero-subtitle-container">
+                <div class="typed-text" id="typedText"></div>
+                <span class="cursor-blink">|</span>
+            </div>
+            <p class="hero-description">
+                Research Engineer in Computer Vision & 3D Graphics.<br>
+                MTUCI · Beeline · Creator of PLER metric
             </p>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">7</div>
-                    <div class="stat-label">Publications (3 Scopus)</div>
+            <div class="hero-buttons">
+                <a href="#publications" class="btn btn-primary">View Publications <i class="fas fa-arrow-down"></i></a>
+                <a href="#" class="btn btn-secondary" id="contactBtn">Contact <i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/GlebVoronkov03/Gleb-Voronkov-CV/blob/main/Gleb_Voronkov_CV.pdf" class="btn btn-outline" target="_blank">Download CV <i class="fas fa-download"></i></a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/GlebVoronkov03" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/gleb-voronkov/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://ieeexplore.ieee.org/author/821069704909655" target="_blank" aria-label="IEEE Xplore"><i class="fas fa-microchip"></i></a>
+                <a href="https://www.researchgate.net/profile/Gleb-Voronkov" target="_blank" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="https://t.me/glebvoronkov" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://vk.com/glebvoronkov" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://www.facebook.com/gleb.voronkov" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a research engineer specializing in <strong>computer vision, 3D graphics, and perceptual quality assessment</strong>. Currently, I'm a master's student at MTUCI (Radio Engineering, 2025–2027) and a researcher at the <strong>MTUCI Computer Vision Center</strong>, where I work on real-time XR production systems and 3D quality metrics.</p>
+                    <p>In parallel, I work as a <strong>PS Core Engineer at Beeline</strong>, maintaining high‑load packet networks and system architecture. My research interests lie at the intersection of <strong>3D asset quality evaluation, motion capture, and generative AI for 3D content</strong>.</p>
+                    <p>I'm the author of the <strong>PLER metric</strong> — a novel full‑reference metric for evaluating geometric fidelity of 3D assets — and hold a registered software copyright for motion capture transfer to Unreal Engine.</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">PLER</div>
-                    <div class="stat-label">Signature Metric</div>
+                <div class="skills">
+                    <h3>Core Competencies</h3>
+                    <div class="skill-tags">
+                        <span>3D Quality Assessment</span>
+                        <span>Computer Vision</span>
+                        <span>Unreal Engine</span>
+                        <span>Photogrammetry</span>
+                        <span>Motion Capture</span>
+                        <span>XR Systems</span>
+                        <span>C++ / Python</span>
+                        <span>Networking (EPC)</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Registered Software</div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="publications" id="publications">
+            <h2 class="section-title">Publications</h2>
+            <div class="pub-tabs">
+                <button class="tab-btn active" data-tab="scopus">Scopus / IEEE <span class="tab-count">3</span></button>
+                <button class="tab-btn" data-tab="rinc">RISC / Preprints <span class="tab-count">3</span></button>
+                <button class="tab-btn" data-tab="software">Software <span class="tab-count">1</span></button>
+            </div>
+
+            <!-- Scopus Tab -->
+            <div class="tab-content active" id="scopus-tab">
+                <div class="pub-grid">
+                    <div class="pub-card">
+                        <div class="pub-title">PLER: A Novel Full-Reference Metric for Evaluating the Geometric Fidelity of 3D Assets</div>
+                        <div class="pub-authors"><strong>Gleb A. Voronkov</strong>, Andrei V. Balobanov</div>
+                        <div class="pub-venue">2026 Systems of Signals Generating and Processing in the Field of on Board Communications, IEEE, pp. 1–5, 2026</div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/document/10948103" target="_blank" class="pub-link">IEEE Xplore <i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="pub-link abstract-link" data-abstract="pler">Abstract <i class="fas fa-align-left"></i></a>
+                        </div>
+                        <div class="pub-abstract" id="abstract-pler" style="display: none;">This paper presents an enhancement of the PLER (Peak Length to Error Ratio) metric for objective quality assessment of 3D models. The original PLER metric, which compares a reference and test 3D model by analyzing ray distances from a bounding sphere, is improved with a new ray distribution method for more uniform coverage and higher accuracy.</div>
+                    </div>
+                    <div class="pub-card">
+                        <div class="pub-title">Research of Methods for Modeling User Assessments of 3D Content for Extended Reality Systems</div>
+                        <div class="pub-authors"><strong>Gleb A. Voronkov</strong>, I.V. Vlasyuk</div>
+                        <div class="pub-venue">2025 Systems of Signals Generating and Processing in the Field of on Board Communications, IEEE, March 2025, pp. 1–5</div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/document/10873942" target="_blank" class="pub-link">IEEE Xplore <i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="pub-link abstract-link" data-abstract="user">Abstract <i class="fas fa-align-left"></i></a>
+                        </div>
+                        <div class="pub-abstract" id="abstract-user" style="display: none;">Analysis of methods for modeling user ratings of video sequences and their application to XR systems. Compares approaches for 2D and 3D content quality evaluation, with aim to develop a new method for 3D content assessment.</div>
+                    </div>
+                    <div class="pub-card">
+                        <div class="pub-title">Error Analysis of Generating 3D Models of Objects Using Various Hardware Systems</div>
+                        <div class="pub-authors"><strong>Gleb A. Voronkov</strong>, V.Yu. Vinetsky, D.A. Egorov</div>
+                        <div class="pub-venue">IEEE Xplore, 2025</div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/author/821069704909655" target="_blank" class="pub-link">View on IEEE <i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="pub-link abstract-link" data-abstract="error">Abstract <i class="fas fa-align-left"></i></a>
+                        </div>
+                        <div class="pub-abstract" id="abstract-error" style="display: none;">Comparative analysis of photogrammetry, TrueDepth (FaceID), and LiDAR for creating 3D models. Includes classification of 3D objects by size to help select appropriate generation methods.</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Projects Delivered</div>
+            </div>
+
+            <!-- RISC Tab -->
+            <div class="tab-content" id="rinc-tab">
+                <div class="pub-grid">
+                    <div class="pub-card">
+                        <div class="pub-title">ЗАХВАТ ДВИЖЕНИЙ ПЕРСОНАЖЕЙ ДЛЯ ПРОИЗВОДСТВА ВЕЩАТЕЛЬНОГО КОНТЕНТА</div>
+                        <div class="pub-authors"><strong>Воронков Г.А.</strong>, Винецкий В.Ю.</div>
+                        <div class="pub-venue">Системы синхронизации, формирования и обработки сигналов, №4, 2025 (RISC)</div>
+                        <div class="pub-links">
+                            <a href="https://elibrary.ru/item.asp?id=XXXXXXXX" target="_blank" class="pub-link">elibrary.ru <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="pub-card">
+                        <div class="pub-title">МЕТОДОЛОГИЯ СНИЖЕНИЯ ДЕТАЛИЗАЦИИ ПО РЕГИОНАМ ИНТЕРЕСА</div>
+                        <div class="pub-authors"><strong>Воронков Г.А.</strong></div>
+                        <div class="pub-venue">Perceptually‑guided mesh simplification based on attention maps (RISC, 2025)</div>
+                        <div class="pub-links">
+                            <a href="https://elibrary.ru/item.asp?id=XXXXXXXX" target="_blank" class="pub-link">elibrary.ru <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="pub-card">
+                        <div class="pub-title">МОДЕЛЬ СТУДИИ ПРОИЗВОДСТВА ВИРТУАЛЬНОГО ВИДЕОКОНТЕНТА С ПРИМЕНЕНИЕМ ТЕХНОЛОГИЙ ДОПОЛНЕННОЙ РЕАЛЬНОСТИ</div>
+                        <div class="pub-authors"><strong>Воронков Г.А.</strong>, Винецкий В.Ю., Егоров Д.А.</div>
+                        <div class="pub-venue">System architecture of real‑time virtual studio (RISC, 2025)</div>
+                        <div class="pub-links">
+                            <a href="https://elibrary.ru/item.asp?id=XXXXXXXX" target="_blank" class="pub-link">elibrary.ru <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Tab -->
+            <div class="tab-content" id="software-tab">
+                <div class="pub-grid">
+                    <div class="pub-card">
+                        <div class="pub-title">Программа захвата и переноса движений с видеозаписи на антропоморфную трехмерную модель в Unreal Engine</div>
+                        <div class="pub-authors"><strong>Gleb A. Voronkov</strong></div>
+                        <div class="pub-venue">Registered Software Copyright, Rospatent</div>
+                        <div class="pub-links">
+                            <a href="https://www.fips.ru/registers-web/" target="_blank" class="pub-link">Search on FIPS <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Research Tab -->
-        <section id="research" class="tab-panel">
-            <h2>📄 Research & Publications</h2>
-            
-            <h3 style="margin-top:2rem;">Peer‑reviewed papers (Scopus / IEEE Xplore)</h3>
-            
-            <div class="card">
-                <span class="badge"><i class="fab fa-ieee"></i> IEEE Xplore</span>
-                <span class="badge"><i class="fas fa-database"></i> Scopus</span>
-                <h3>PLER: A Novel Full‑Reference Metric for Evaluating the Geometric Fidelity of 3D Assets</h3>
-                <p><em>Gleb A. Voronkov</em></p>
-                <p>We introduce PLER, a perceptually‑motivated metric that quantifies geometric distortion of 3D models relative to a reference. 
-                The metric is invariant to topology changes and robust to scale variations. Validated on ShapeNet and custom photogrammetry datasets.</p>
-                <a href="#" class="btn"><i class="fas fa-file-pdf"></i> PDF</a>
-                <a href="https://github.com/GlebVoronkov03" class="btn btn-outline"><i class="fab fa-github"></i> Open‑source code</a>
-                <!-- Placeholder: update real PDF link -->
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-video"></i></div>
+                    <h3 class="project-title">ARTCam — Virtual Studio</h3>
+                    <p class="project-description">Real‑time virtual production studio on Unreal Engine. Immerses presenters into 3D environments without LED walls. Selected for Innopolis University Accelerator (2023).</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-camera"></i></div>
+                    <h3 class="project-title">Photogrammetry Pipeline</h3>
+                    <p class="project-description">Complete 3D scanning solution — from capture to high‑fidelity model generation. Used for XR content production within ARTCam ecosystem.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-running"></i></div>
+                    <h3 class="project-title">Motion Capture for Unreal</h3>
+                    <p class="project-description">Software for transferring motion from video to 3D character in Unreal Engine. Registered as official software copyright (Rospatent).</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="project-title">PLER Metric Implementation</h3>
+                    <p class="project-description">Open‑source implementation of the PLER metric for objective 3D asset quality assessment. Available on GitHub.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/GlebVoronkov03" target="_blank" class="project-link">GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="card">
-                <span class="badge"><i class="fab fa-ieee"></i> IEEE</span>
-                <h3>Research of Methods for Modeling User Assessments of 3D Content for Extended Reality Systems</h3>
-                <p><em>Vlasyuk I.V., Voronkov G.A.</em><br>
-                2025 Systems of Signals Generating and Processing in the Field of on Board Communications, IEEE, 12 March 2025, pp. 1–5.</p>
-                <p>Comparative analysis of objective and subjective approaches to 3D quality assessment. We propose a hybrid model combining handcrafted geometric features with user‑perception weighting.</p>
-                <a href="https://ieeexplore.ieee.org/document/10873942" class="btn"><i class="fas fa-external-link-alt"></i> IEEE Xplore</a>
-            </div>
-            
-            <div class="card">
-                <span class="badge"><i class="fab fa-ieee"></i> IEEE</span>
-                <span class="badge"><i class="fas fa-database"></i> Scopus</span>
-                <h3>Error Analysis of Generating 3D Models of Objects Using Various Hardware Systems</h3>
-                <p><em>Voronkov G.A. et al.</em></p>
-                <p>Systematic measurement of reconstruction errors for different depth‑sensing modalities (photogrammetry, LiDAR, TrueDepth). Introduces a taxonomy of 3D errors and recommends hardware‑metric pairings for industrial quality control.</p>
-                <a href="#" class="btn"><i class="fas fa-file-pdf"></i> PDF</a>
-                <!-- Placeholder -->
-            </div>
-            
-            <h3 style="margin-top:2rem;">RSCI (РИНЦ) publications</h3>
-            <div class="card">
-                <h3>Захват движений персонажей для производства вещательного контента</h3>
-                <p><em>Воронков Г.А., Винецкий В.Ю.</em><br>
-                Системы синхронизации, формирования и обработки сигналов, №4, 2025.</p>
-            </div>
-            <div class="card">
-                <h3>Методология снижения детализации по регионам интереса</h3>
-                <p>Perceptually‑guided mesh simplification based on visual attention maps.</p>
-            </div>
-            <div class="card">
-                <h3>Модель студии производства виртуального видеоконтента с применением технологий дополненной реальности</h3>
-                <p>System architecture of a real‑time virtual studio combining AR and motion capture.</p>
-            </div>
-            
-            <h3 style="margin-top:2rem;">Registered Software</h3>
-            <div class="card">
-                <h3>Программа захвата и переноса движений с видеозаписи на антропоморфную трехмерную модель в Unreal Engine</h3>
-                <p><span class="badge"><i class="fas fa-certificate"></i> Свидетельство о гос. регистрации</span></p>
-                <p>End‑to‑end pipeline: monocular video → 2D/3D pose estimation → retargeting → real‑time animation in Unreal Engine. Designed for broadcast‑quality virtual production.</p>
-            </div>
-            
-            <h3 style="margin-top:2rem;">Research interests</h3>
-            <p>
-                <span class="badge">3D quality metrics</span>
-                <span class="badge">geometric fidelity</span>
-                <span class="badge">point cloud evaluation</span>
-                <span class="badge">photogrammetry</span>
-                <span class="badge">motion capture</span>
-                <span class="badge">neural rendering</span>
-                <span class="badge">3D codecs</span>
-                <span class="badge">system architecture for CV</span>
-            </p>
         </section>
-        
-        <!-- Projects Tab -->
-        <section id="projects" class="tab-panel">
-            <h2>🛠️ Projects</h2>
-            
-            <h3>3D Quality & Metrics</h3>
-            <table class="project-table">
-                <tr><th>Project</th><th>Role & Contribution</th></tr>
-                <tr><td><strong>PLER metric</strong></td><td>Sole author. Mathematical derivation, Python implementation, benchmarking, paper.</td></tr>
-                <tr><td><strong>Topology‑aware 3D metric</strong></td><td>Developed a metric that penalizes topological noise while ignoring irrelevant vertex shuffling.</td></tr>
-                <tr><td><strong>Objective reference‑based 3D quality evaluation framework</strong></td><td>Designed a modular pipeline: preprocessing → feature extraction → metric fusion → reporting. Used internally at MTUCI.</td></tr>
-                <tr><td><strong>ROI‑driven detail reduction</strong></td><td>Perceptually optimized mesh decimation using saliency maps.</td></tr>
-            </table>
-            
-            <h3>Virtual Production & Motion Capture</h3>
-            <table class="project-table">
-                <tr><th>Project</th><th>Role & Contribution</th></tr>
-                <tr><td><strong>ARTCam virtual studio</strong></td><td>Lead developer & system architect. Real‑time embedding of presenters into 3D environments. Unreal Engine, NDisplay, live compositing.</td></tr>
-                <tr><td><strong>Human motion tracking & retargeting</strong></td><td>Created a custom pipeline for monocular motion capture → skeleton fitting → real‑time transfer to 3D characters. Registered software.</td></tr>
-                <tr><td><strong>Photogrammetry rig (table & room)</strong></td><td>Designed and calibrated multi‑camera setups for high‑fidelity 3D reconstruction. Integrated with ARTCam.</td></tr>
-                <tr><td><strong>Depth map estimation (Microsoft Kinect bypass)</strong></td><td>Developed an alternative depth‑sensing algorithm using stereo vision and structured light principles, circumventing existing patents.</td></tr>
-            </table>
-            
-            <h3>3D Engine & Codec</h3>
-            <table class="project-table">
-                <tr><th>Project</th><th>Role & Contribution</th></tr>
-                <tr><td><strong>3D codec (159× lossless compression)</strong></td><td>Invented a compression scheme for 3D geometry and textures that achieves 159:1 ratio without quality loss.</td></tr>
-                <tr><td><strong>Custom 3D engine</strong></td><td>Lightweight real‑time renderer with physically‑based shading, written for research purposes. Supports glTF and custom compressed formats.</td></tr>
-                <tr><td><strong>Algebraic representation of 3D models</strong></td><td>Developed a parametric representation using algebraic surfaces, enabling resolution‑independent asset storage.</td></tr>
-            </table>
-            
-            <h3>AI & Infrastructure</h3>
-            <table class="project-table">
-                <tr><th>Project</th><th>Role & Contribution</th></tr>
-                <tr><td><strong>AI‑powered 3D generation</strong></td><td>Research on generative models for 3D content creation (NeRF, diffusion). Focus on controllable generation guided by quality metrics.</td></tr>
-                <tr><td><strong>Radio‑based trackers</strong></td><td>Prototypes of motion trackers operating in RF spectrum for occluded environments.</td></tr>
-                <tr><td><strong>Noise suppression & drift correction</strong></td><td>Algorithms for cleaning inertial and optical tracker data. Kalman/particle filter variants.</td></tr>
-                <tr><td><strong>Sound recording system (middle‑ear model)</strong></td><td>Designed a microphone array that mimics human auditory perception for spatial audio recording.</td></tr>
-                <tr><td><strong>Universal media file type</strong></td><td>Conceptual design of a container format unifying 2D/3D/audio/VR media, with built‑in quality metadata.</td></tr>
-            </table>
-            
-            <h3>Space & Localisation</h3>
-            <table class="project-table">
-                <tr><th>Project</th><th>Role & Contribution</th></tr>
-                <tr><td><strong>Maximum orbital capacity</strong></td><td>Simulation and mathematical model for calculating optimal satellite constellation density without collisions.</td></tr>
-                <tr><td><strong>Localisation (3D)</strong></td><td>Multi‑sensor SLAM and marker‑based positioning for indoor environments.</td></tr>
-            </table>
+
+        <!-- Experience Section -->
+        <section class="experience" id="experience">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Research Engineer</span>
+                            <span class="timeline-date">2023 – Present</span>
+                        </div>
+                        <div class="timeline-org">MTUCI Computer Vision Center · Moscow</div>
+                        <p class="timeline-description">Developing real‑time XR production systems, 3D quality metrics (PLER), and motion capture pipelines. Advisor: Dr. Dmitry Egorov.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-title">PS Core Engineer</span>
+                            <span class="timeline-date">2025 – Present</span>
+                        </div>
+                        <div class="timeline-org">Beeline (PJSC VimpelCom) · Moscow</div>
+                        <p class="timeline-description">Maintaining high‑load packet networks, system architecture, and network optimization.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-title">MSc in Radio Engineering</span>
+                            <span class="timeline-date">2025 – 2027 (Expected)</span>
+                        </div>
+                        <div class="timeline-org">MTUCI · Moscow</div>
+                        <p class="timeline-description">Faculty of Radio and Television. Research focus: 3D quality assessment and XR systems.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-title">BSc in Infocommunication Technologies</span>
+                            <span class="timeline-date">2021 – 2025</span>
+                        </div>
+                        <div class="timeline-org">MTUCI · Moscow</div>
+                        <p class="timeline-description">BSc with Honours. Groups: BIK2101, BIK2105.</p>
+                    </div>
+                </div>
+            </div>
         </section>
-        
-        <!-- Experience Tab -->
-        <section id="experience" class="tab-panel">
-            <h2>💼 Experience & Education</h2>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">2025 – present</div>
-                <h3>AI System Developer, Telcore</h3>
-                <p>Architected AI solutions for computer vision in telecom. Designed evaluation metrics for model performance, reducing error rate. Integrated ML pipelines into existing infrastructure, ensuring scalability and fault tolerance.</p>
+
+        <!-- Awards Section -->
+        <section class="awards" id="awards">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <i class="fas fa-trophy award-icon"></i>
+                    <h3>Alfa‑Future Scholarship</h3>
+                    <p>Alfa‑Bank, December 2025</p>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-rocket award-icon"></i>
+                    <h3>Student Startup Finalist</h3>
+                    <p>Foundation for Innovation, 2023 — ARTCam project</p>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-microchip award-icon"></i>
+                    <h3>Innopolis Accelerator</h3>
+                    <p>Selected participant, July 2023 — ARTCam</p>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2025 – present</div>
-                <h3>PS Core Engineer, Beeline (PJSC VimpelCom)</h3>
-                <p>Maintain high‑availability packet‑core network serving millions of subscribers. Apply system‑level failure‑mode analysis and capacity planning — a mindset now used to design robust CV evaluation pipelines.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2024 – present</div>
-                <h3>Researcher, Center for Computer Vision, MTUCI</h3>
-                <p>Lead author of PLER metric and architect of the 3D quality evaluation framework. Developed motion capture pipeline and integrated it into ARTCam virtual studio. Supervised by Dr. Dmitry Egorov.</p>
-            </div>
-            
-            <h3 style="margin-top:2rem;">Education</h3>
-            <div class="timeline-item">
-                <div class="timeline-date">2026 (expected)</div>
-                <h3>MSc in Radio Engineering, MTUCI</h3>
-                <p>Faculty of Radio and Television. Thesis: «Objective quality metrics for 3D content in extended reality systems» (based on PLER and related works).</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2021 – 2025</div>
-                <h3>BSc with honours in Infocommunication Technologies and Communication Systems, MTUCI</h3>
-                <p>Groups BIK2101, BIK2105. GPA: 5.0/5.0.</p>
-            </div>
-            
-            <h3 style="margin-top:2rem;">Awards & Grants</h3>
-            <ul style="list-style-type: none; padding-left: 0;">
-                <li style="margin-bottom: 0.5rem;"><span class="badge"><i class="fas fa-trophy"></i></span> <strong>Alpha‑Future Scholarship</strong>, Alfa‑Bank (December 2025)</li>
-                <li style="margin-bottom: 0.5rem;"><span class="badge"><i class="fas fa-trophy"></i></span> <strong>Finalist, Student Startup Grant</strong> (2023) — ARTCam project</li>
-                <li style="margin-bottom: 0.5rem;"><span class="badge"><i class="fas fa-trophy"></i></span> <strong>Selected for Innopolis University Accelerator</strong> (July 2023) — ARTCam</li>
-            </ul>
         </section>
-        
-        <!-- Contact Tab -->
-        <section id="contact" class="tab-panel">
-            <h2>🔗 Contact & Links</h2>
-            <div class="contact-links" style="margin-top:2rem;">
-                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i> your.email@example.com</a><br>
-                <a href="https://www.linkedin.com/in/gleb-voronkov" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a><br>
-                <a href="https://github.com/GlebVoronkov03" target="_blank"><i class="fab fa-github"></i> GitHub</a><br>
-                <a href="https://ieeexplore.ieee.org/author/37090096739" target="_blank"><i class="fab fa-ieee"></i> IEEE Xplore</a><br>
-                <a href="https://www.researchgate.net/profile/Gleb-Voronkov" target="_blank"><i class="fab fa-researchgate"></i> ResearchGate</a><br>
-                <a href="https://t.me/glebvoronkov" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <p class="contact-text">I'm always open to research collaborations, speaking opportunities, or just a technical chat.</p>
+                <div class="contact-email">
+                    <i class="fas fa-envelope"></i>
+                    <span id="emailAddress">gleb.voronkov [at] mtuci.ru</span>
+                    <button class="copy-btn" id="copyEmailBtn" aria-label="Copy email"><i class="fas fa-copy"></i></button>
+                </div>
+                <div class="social-links-footer">
+                    <a href="https://github.com/GlebVoronkov03" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/gleb-voronkov/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://ieeexplore.ieee.org/author/821069704909655" target="_blank"><i class="fas fa-microchip"></i></a>
+                    <a href="https://t.me/glebvoronkov" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.researchgate.net/profile/Gleb-Voronkov" target="_blank"><i class="fab fa-researchgate"></i></a>
+                </div>
             </div>
-            <p style="margin-top:2rem;">
-                <a href="#" class="btn"><i class="fas fa-download"></i> Download CV (PDF)</a>
-            </p>
-            <!-- Placeholder for actual CV file link -->
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Gleb Voronkov. Built with vanilla JS.</p>
+            <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+        </footer>
     </main>
-    
-    <footer>
-        <p>© 2026 Gleb Voronkov. Built with GitHub Pages. All information is publicly available.</p>
-    </footer>
-    
-    <script>
-        // Tab navigation logic
-        const navLinks = document.querySelectorAll('nav a[data-tab]');
-        const panels = document.querySelectorAll('.tab-panel');
-        
-        function showTab(tabId) {
-            panels.forEach(p => p.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-tab') === tabId) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const tab = this.getAttribute('data-tab');
-                showTab(tab);
-                // Close mobile menu if open
-                document.getElementById('mainNav').classList.remove('show');
-            });
-        });
-        
-        // Also allow CTA buttons inside About to switch tabs
-        document.querySelectorAll('a[data-tab]').forEach(el => {
-            if (!el.closest('nav')) {
-                el.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showTab(this.getAttribute('data-tab'));
-                });
-            }
-        });
-        
-        // Mobile menu toggle
-        function toggleMenu() {
-            document.getElementById('mainNav').classList.toggle('show');
-        }
-        window.toggleMenu = toggleMenu;
-    </script>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast">Email copied!</div>
+
+    <script src="script.js"></script>
 </body>
 </html>
